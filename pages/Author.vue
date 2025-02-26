@@ -39,5 +39,5 @@
 </template>
 
 <script setup>
-import { comments } from "~/components/AnnotableText.vue";
+import { comments } from "./pages/AnnotableText.vue";
 </script>

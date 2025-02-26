@@ -8,7 +8,6 @@
     >
       <slot></slot>
     </div>
-
     <!-- Boîte pour ajouter un commentaire -->
     <div
       v-if="selectedText"
@@ -30,40 +29,52 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue";
+<script>
+import { ref } from "vue";
 
-const selectedText = ref(null);
-const comment = ref("");
-const comments = reactive([]);
+// Export comments as a named export
+export const comments = ref([]);
 
-// Fonction pour gérer la sélection de texte
-const handleTextSelection = () => {
-  const selection = window.getSelection();
-  if (!selection.rangeCount) return;
+export default {
+  setup() {
+    const selectedText = ref(null);
+    const comment = ref("");
 
-  const range = selection.getRangeAt(0);
-  const text = selection.toString().trim();
+    // Fonction pour gérer la sélection de texte
+    const handleTextSelection = () => {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      const text = selection.toString().trim();
+      if (text) {
+        const rect = range.getBoundingClientRect();
+        selectedText.value = { text, rect };
+      } else {
+        selectedText.value = null;
+      }
+    };
 
-  if (text) {
-    const rect = range.getBoundingClientRect();
-    selectedText.value = { text, rect };
-  } else {
-    selectedText.value = null;
-  }
-};
+    // Fonction pour ajouter un commentaire
+    const addComment = () => {
+      if (selectedText.value && comment.value.trim()) {
+        comments.value.push({
+          text: selectedText.value.text,
+          comment: comment.value,
+          id: Date.now(),
+        });
+        selectedText.value = null;
+        comment.value = "";
+      }
+    };
 
-// Fonction pour ajouter un commentaire
-const addComment = () => {
-  if (selectedText.value && comment.value.trim()) {
-    comments.push({
-      text: selectedText.value.text,
-      comment: comment.value,
-      id: Date.now(),
-    });
-    selectedText.value = null;
-    comment.value = "";
-  }
+    return {
+      selectedText,
+      comment,
+      comments,
+      handleTextSelection,
+      addComment,
+    };
+  },
 };
 </script>
 

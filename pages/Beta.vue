@@ -27,6 +27,6 @@
 </template>
 
 <script setup>
-import AnnotableText from "~/components/AnnotableText.vue";
-import { comments } from "~/components/AnnotableText.vue";
+import AnnotableText from "./AnnotableText.vue";
+import { comments } from "./AnnotableText.vue";
 </script>
