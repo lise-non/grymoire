@@ -1,8 +1,7 @@
-import { defineEventHandler, getRequestURL, sendRedirect } from "h3";
-
 export default defineEventHandler((event) => {
   const url = getRequestURL(event);
   if (url.pathname === "/") {
-    return sendRedirect(event, "/dashboard", 302);
+    // Consider redirecting to connexion if not logged in by default
+    return sendRedirect(event, "/connexion", 302);
   }
 });

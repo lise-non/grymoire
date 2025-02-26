@@ -1,9 +1,12 @@
 // middleware/auth.js
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
   const { $supabase } = useNuxtApp();
-  const user = $supabase.auth.getUser();
 
-  if (!user && to.path !== "/connexion") {
+  // Properly await the Promise to get user data
+  const { data, error } = await $supabase.auth.getUser();
+
+  // If no user is found and we're not already on the login page
+  if ((!data?.user || error) && to.path !== "/connexion") {
     return navigateTo("/connexion");
   }
 });
