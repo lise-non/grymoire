@@ -1,4 +1,5 @@
-// server/middleware/redirect.js
+import { defineEventHandler, getRequestURL, sendRedirect } from "h3";
+
 export default defineEventHandler((event) => {
   const url = getRequestURL(event);
   if (url.pathname === "/") {
