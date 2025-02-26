@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <!-- <header>
       <nav>
         <NuxtLink v-if="user" to="/tableau-de-bord">Dashboard</NuxtLink>
         <NuxtLink v-if="user" to="/beta/reader-comment">Dashboard</NuxtLink>
@@ -8,10 +8,12 @@
         <NuxtLink v-if="!user" to="/inscription">Signup</NuxtLink>
         <NuxtLink v-if="user" to="/connexion">Logout</NuxtLink>
       </nav>
-    </header>
+    </header> -->
 
     <main class="bg-gray-100">
-      <NuxtPage />
+      <SideBar v-model="isSidebarOpen" v-model:mode="isAuthorMode"></SideBar>
+      <NuxtPage :isSidebarOpen="isSidebarOpen" :isAuthorMode="isAuthorMode" />
+      <MessageBar></MessageBar>
     </main>
   </div>
 </template>
@@ -22,6 +24,9 @@ import { ref, onMounted } from "vue";
 
 const { user, signOut } = useAuth();
 const isAuthenticated = ref(false);
+
+const isSidebarOpen = ref(false);
+const isAuthorMode = ref(false);
 
 onMounted(() => {
   isAuthenticated.value = user.value;
