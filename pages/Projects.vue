@@ -71,8 +71,7 @@
           :project="{
             title: 'Nom du projet',
             tags: ['Fantaisie', 'Magie', 'Empire'],
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+            description: '',
             cover: '/images/empty.png',
           }"
           :is-author-mode="props.isAuthorMode"

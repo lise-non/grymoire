@@ -185,7 +185,7 @@ const candidates = ref([
     chapters: "Chapitres 3 - 15",
     type: "Orthographe",
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Bibliothécaire passionnée, Élise lit en moyenne soixante romans par an couvrant tous les genres littéraires. Cette exposition intensive aux différentes œuvres contemporaines lui permet de situer votre manuscrit dans le paysage éditorial actuel. Elle identifiera les similitudes avec d'autres publications récentes, ce qui vous aidera à renforcer votre positionnement unique ou à éviter les ressemblances trop marquées avec des titres populaires. Son feedback inclut souvent des recommandations précises sur les éléments qui distinguent ou rapprochent votre œuvre d'autres livres à succès dans la même catégorie, vous permettant d'affiner votre proposition de valeur pour les éditeurs et les lecteurs.",
   },
   {
     id: 2,
@@ -196,7 +196,7 @@ const candidates = ref([
     chapters: "Chapitre 6",
     type: "Scénario",
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Chercheur en sociologie et membre actif d'associations culturelles, Mohammed porte un regard attentif sur la représentation de la diversité dans les œuvres littéraires. Il évalue la manière dont les personnages issus de différents horizons culturels, ethniques, sociaux ou sexuels sont dépeints dans votre récit. Son analyse vous permettra d'identifier les stéréotypes involontaires, les angles morts culturels ou les opportunités manquées d'enrichir votre narration par une représentation plus nuancée de la diversité humaine. ",
   },
   {
     id: 3,
@@ -207,7 +207,7 @@ const candidates = ref([
     chapters: "Chapitres 1 - 7",
     type: "Cohérence",
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Ancienne dramaturge et scénariste pour le théâtre, Juliette possède un talent exceptionnel pour évaluer l'authenticité et l'efficacité des dialogues. Elle détecte immédiatement les échanges qui sonnent artificiels, les expositions forcées à travers les conversations, ou les voix de personnages insuffisamment différenciées. Son feedback se concentre sur la manière dont vos dialogues font avancer l'intrigue, révèlent les personnalités ou établissent les relations entre protagonistes.",
   },
   {
     id: 4,
@@ -218,7 +218,7 @@ const candidates = ref([
     chapters: "Chapitres 8 - 12",
     type: "Orthographe",
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Traducteur professionnel travaillant entre plusieurs langues, Victor évalue votre manuscrit à travers le prisme d'une potentielle diffusion internationale. Il identifie les références culturelles trop locales qui pourraient nécessiter des explications, les jeux de mots intraduisibles ou les concepts qui risquent de perdre leur impact lors d'une traduction. Son feedback vous aidera à prendre des décisions éclairées sur les éléments à préserver pour leur authenticité locale ou à adapter pour faciliter une réception internationale. Particulièrement utile si vous envisagez des traductions de votre œuvre, son regard multiculturel enrichira également la profondeur de votre récit pour les lecteurs de votre langue d'origine.",
   },
   {
     id: 5,
@@ -229,7 +229,7 @@ const candidates = ref([
     chapters: "Chapitre 16",
     type: "Commentaire",
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Ancien directeur de collection chez un grand éditeur, Bernard lit votre manuscrit avec la double perspective d'un bêta-lecteur et d'un professionnel de l'édition. Il évalue non seulement la qualité intrinsèque de votre texte, mais aussi son potentiel commercial et les modifications qu'un éditeur pourrait demander. Son feedback anticipera les points qui risquent de susciter des réticences lors de la soumission à des maisons d'édition et vous proposera des ajustements stratégiques pour augmenter vos chances d'acceptation. Sans compromettre votre vision artistique, il vous conseillera sur les aspects susceptibles d'intéresser particulièrement les professionnels du livre : accroche initiale, rythme, longueur optimale et adéquation avec les tendances actuelles du marché.",
   },
 ]);
 
