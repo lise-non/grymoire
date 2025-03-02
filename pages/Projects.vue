@@ -1,12 +1,15 @@
 // pages/projects.vue
 <template>
   <div
-    class="max-w-7xl mx-auto transition-all duration-300"
-    :class="props.isSidebarOpen ? 'ml-64 mr-64' : 'ml-16 mr-64'"
+    class="max-w-7xl mx-auto transition-all duration-300 p-6"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
+    ]"
   >
     <!-- Header -->
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-4xl font-bold text-navy-900">Mes projets</h1>
+      <h1 class="text-4xl font-bold text-[#20214B]">Mes projets</h1>
       <div class="flex gap-4">
         <div class="relative">
           <input
@@ -31,7 +34,7 @@
             </svg>
           </span>
         </div>
-        <NuxtLink to="NewProject">
+        <NuxtLink to="NewProject" v-if="isAuthorMode">
           <button
             class="bg-[#0B5B50] text-white px-4 py-2 rounded-lg flex items-center gap-2"
           >
@@ -59,7 +62,7 @@
     <div class="space-y-8">
       <!-- Drafts Section -->
       <section>
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">
+        <h2 class="text-2xl font-bold text-[#20214B] mb-4">
           Brouillons
           <span class="text-sm font-normal text-red-500">(1)</span>
         </h2>
@@ -78,7 +81,7 @@
 
       <!-- In Progress Section -->
       <section>
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">
+        <h2 class="text-2xl font-bold text-[#20214B] mb-4">
           En cours
           <span class="text-sm font-normal text-red-500">(1)</span>
         </h2>
@@ -87,9 +90,7 @@
           :project="{
             title: 'Ceux qui servent',
             tags: ['Animaux fantastiques', 'Magie'],
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-            readers: 2,
+            description: `La mèche du destin s’est allumée. Le futur marche sur Norrasq, et ni le froid ni la montagne ne l’arrêteront ; ne reste plus que la commandante Sunie Tersola, qui chevauche avant tout ses principes et son devoir. Une interdiction de vol, un sursaut éthique, et la voilà tutoyant les sommets avec Teli. L’humaine et le griffon se feront rempart, ensemble. Les griffons font tant la fierté que l’efficacité de la Légion ; son bastion septentrional de Norrasq est oublié, à la`,
             cover: '/images/cover.png',
           }"
           :is-author-mode="props.isAuthorMode"
@@ -98,7 +99,7 @@
 
       <!-- Completed Section -->
       <section>
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">
+        <h2 class="text-2xl font-bold text-[#20214B] mb-4">
           Terminés
           <span class="text-sm font-normal text-red-500">(2)</span>
         </h2>
@@ -110,8 +111,7 @@
             :project="{
               title: `Tarot ${index + 1}`,
               tags: ['Fantastique', 'Objets magiques', 'Aventure'],
-              description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+              description: `Rune Saint-John, dernier descendant de la cour déchue du Soleil, se voit engagé pour enquêter sur la disparition d'Addam, fils de dame Justice, en Nouvelle-Atlantide, la ville-île où les Atlantes se sont établis après la destruction de leur terre d'origine par les humains. `,
               readers: 2,
               cover: '/images/tarot.png',
             }"
@@ -129,5 +129,6 @@ import ProjectCard from "~/components/ProjectCard.vue";
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 </script>

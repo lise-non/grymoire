@@ -5,7 +5,7 @@
       class="bg-white rounded-lg p-4 flex gap-4 border hover:shadow-lg transition-shadow duration-200 my-2"
     >
       <!-- Project thumbnail -->
-      <img :src="props.project.cover" alt="" class="w-32 h-34" />
+      <img :src="props.project.cover" alt="" class="w-32 h-34 rounded-lg" />
 
       <!-- Project details -->
       <div class="flex-1">

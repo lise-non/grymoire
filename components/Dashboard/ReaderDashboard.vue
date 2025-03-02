@@ -1,19 +1,19 @@
 <template>
-  <div class="max-w-full p-6 space-y-6">
+  <div class="w-7xl p-6 space-y-6">
     <!-- Header -->
-    <h1 class="text-3xl font-bold text-navy-900 flex items-center gap-2">
+    <h1 class="text-3xl font-bold text-[#20214B] flex items-center gap-2">
       Bonjour Hibou
       <span class="text-2xl">👋</span>
     </h1>
 
-    <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-flow-row-dense grid-cols-3 gap-6">
       <!-- Balance Card -->
       <div class="bg-white rounded-3xl p-8 space-y-8 h-fit">
         <div class="space-y-4">
-          <h2 class="text-xl font-bold text-navy-900">Mon solde</h2>
+          <h2 class="text-xl font-bold text-[#20214B]">Mon solde</h2>
           <div class="text-4xl font-bold">349,35 €</div>
           <button
-            class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 transition-colors"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@
         </div>
 
         <div class="space-y-2">
-          <h2 class="text-xl font-bold text-navy-900">Déjà retiré</h2>
+          <h2 class="text-xl font-bold text-[#20214B]">Déjà retiré</h2>
           <div class="text-3xl font-bold text-gray-600">127,53 €</div>
         </div>
       </div>
@@ -40,7 +40,7 @@
       <!-- Revenue Chart -->
       <div class="bg-white rounded-3xl p-8 col-span-2">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-bold text-navy-900">Revenus</h2>
+          <h2 class="text-xl font-bold text-[#20214B]">Revenus</h2>
           <div class="flex gap-2">
             <button class="p-2 rounded-lg hover:bg-gray-100">
               <svg
@@ -98,9 +98,7 @@
     </div>
 
     <!-- Current Reading -->
-    <div
-      class="bg-emerald-800 rounded-3xl p-6 flex items-center justify-between"
-    >
+    <div class="bg-[#0B5B50] rounded-3xl p-6 flex items-center justify-between">
       <div class="flex items-center gap-6">
         <img
           src="/public/images/cover.png"
@@ -145,7 +143,7 @@
     <!-- Detailed Missions Section -->
     <div class="bg-white rounded-3xl shadow-sm p-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-navy-900 flex items-center gap-2">
+        <h2 class="text-2xl font-bold text-[#20214B] flex items-center gap-2">
           Mes missions
           <span class="text-red-400">(2)</span>
         </h2>
@@ -184,7 +182,7 @@
       </div>
 
       <!-- Mission Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-2 gap-6">
         <!-- Orthography Mission 1 -->
         <div class="bg-gray-50 rounded-2xl p-6">
           <div class="flex items-center gap-3 mb-4">
@@ -201,21 +199,21 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-1.png"
+              src="/public/images/pp-1.jpg"
               alt="Marion R"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Marion R</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Ceux Qui Servent</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Ceux Qui Servent</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Dans un monde où les griffons règnent sur les cieux, les humains ne
-            sont que des serviteurs. Mais tandis qu'une rébellion gronde,
-            l'équilibre millénaire vacille. Entre alliances fragiles, trahisons
-            et batailles épiques, Ceux qui servent vous plonge dans un univers
-            où le destin se joue au rythme des ailes déployées...
+            J’ai été séduite par l’atmosphère froide et implacable de Norrasq,
+            qui contraste avec la chaleur des liens entre les personnages. Sunie
+            est un personnage marquant, et l’univers semble taillé pour de
+            grandes aventures. Une belle réussite malgré un démarrage un peu
+            lent.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -223,7 +221,7 @@
               <img
                 v-for="i in 4"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -240,7 +238,7 @@
               Voir le projet
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
               Reprendre la beta lecture
             </button>
@@ -263,21 +261,23 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-3.png"
+              src="/public/images/pp-3.jpg"
               alt="Marion R"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Marion R</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Ceux Qui Servent</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Ceux Qui Servent</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Dans un monde où les griffons règnent sur les cieux, les humains ne
-            sont que des serviteurs. Mais tandis qu'une rébellion gronde,
-            l'équilibre millénaire vacille. Entre alliances fragiles, trahisons
-            et batailles épiques, Ceux qui servent vous plonge dans un univers
-            où le destin se joue au rythme des ailes déployées...
+            Nous recherchons un regard critique sur le développement des
+            personnages principaux de notre roman fantastique. Votre mission est
+            d'évaluer si leur évolution psychologique reste cohérente face aux
+            événements magiques qui bouleversent leur quotidien. Portez une
+            attention particulière aux réactions émotionnelles des protagonistes
+            et identifiez les moments où leurs comportements pourraient sembler
+            forcés ou insuffisamment justifiés par l'intrigue.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -285,7 +285,7 @@
               <img
                 v-for="i in 4"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -302,7 +302,7 @@
               Voir le projet
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
               Reprendre la beta lecture
             </button>
@@ -325,21 +325,23 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-2.png"
+              src="/public/images/pp-2.jpg"
               alt="Marion R"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Marion R</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Ceux Qui Servent</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Ceux Qui Servent</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Dans un monde où les griffons règnent sur les cieux, les humains ne
-            sont que des serviteurs. Mais tandis qu'une rébellion gronde,
-            l'équilibre millénaire vacille. Entre alliances fragiles, trahisons
-            et batailles épiques, Ceux qui servent vous plonge dans un univers
-            où le destin se joue au rythme des ailes déployées...
+            Votre mission consiste à analyser le rythme narratif de ce thriller
+            médical. Identifiez les passages qui ralentissent inutilement
+            l'action ou, au contraire, les moments où les révélations
+            s'enchaînent trop rapidement pour être pleinement assimilées. Nous
+            attendons des suggestions concrètes pour améliorer la fluidité du
+            récit tout en maintenant la tension nécessaire à ce genre
+            littéraire.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -347,7 +349,7 @@
               <img
                 v-for="i in 4"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -364,7 +366,7 @@
               Voir le projet
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
               Continuer la beta lecture
             </button>
@@ -387,20 +389,22 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-3.png"
+              src="/public/images/pp-3.jpg"
               alt="Frank herbert"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Frank herbert</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Dune</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Dune</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Corem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit.
+            Pour ce roman historique se déroulant pendant la Première Guerre
+            mondiale, nous vous demandons d'examiner l'authenticité des
+            descriptions d'époque. Relevez toute incohérence ou anachronisme
+            dans les dialogues, les objets mentionnés, ou les comportements
+            sociaux décrits. Vos connaissances historiques seront précieuses
+            pour garantir la crédibilité du cadre temporel de notre récit.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -408,7 +412,7 @@
               <img
                 v-for="i in 2"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -425,7 +429,7 @@
               Voir le projet
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
               Continuer la beta lecture
             </button>
@@ -437,7 +441,7 @@
     <!-- Detailed Candidature Section -->
     <div class="bg-white rounded-3xl shadow-sm p-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-navy-900 flex items-center gap-2">
+        <h2 class="text-2xl font-bold text-[#20214B] flex items-center gap-2">
           Candidatures à valider
           <span class="text-red-400">(2)</span>
         </h2>
@@ -476,7 +480,7 @@
       </div>
 
       <!-- Mission Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-2 gap-6">
         <!-- Orthography Mission 1 -->
         <div class="bg-gray-50 rounded-2xl p-6">
           <div class="flex items-center gap-3 mb-4">
@@ -493,21 +497,25 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-3.png"
+              src="/public/images/pp-3.jpg"
               alt="Marion R"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Marion R</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Ceux Qui Servent</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Ceux Qui Servent</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Dans un monde où les griffons règnent sur les cieux, les humains ne
-            sont que des serviteurs. Mais tandis qu'une rébellion gronde,
-            l'équilibre millénaire vacille. Entre alliances fragiles, trahisons
-            et batailles épiques, Ceux qui servent vous plonge dans un univers
-            où le destin se joue au rythme des ailes déployées...
+            Passionné de fantasy depuis plus de vingt ans, Marc a dévoré les
+            œuvres majeures comme les séries moins connues du genre. Sa
+            connaissance approfondie des tropes, archétypes et mécanismes
+            narratifs propres à la fantasy lui permet d'identifier rapidement
+            les clichés à éviter et d'apprécier les innovations.
+            Particulièrement sensible à la cohérence des systèmes magiques et
+            des univers créés, il saura repérer les incohérences dans la
+            construction du monde et suggérer des améliorations pertinentes qui
+            respectent les codes du genre tout en encourageant l'originalité.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -515,7 +523,7 @@
               <img
                 v-for="i in 4"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -529,12 +537,12 @@
             <button
               class="px-4 py-2 border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-50 text-sm"
             >
-              Voir le projet
+              Se rétracter
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
-              Reprendre la beta lecture
+              Rejoindre le projet
             </button>
           </div>
         </div>
@@ -555,20 +563,26 @@
 
           <div class="flex items-center gap-3 mb-4">
             <img
-              src="/public/images/profil-picture-2.png"
+              src="/public/images/pp-2.jpg"
               alt="Frank herbert"
               class="w-8 h-8 rounded-full"
             />
             <span class="font-medium text-gray-900">Frank herbert</span>
           </div>
 
-          <h3 class="font-bold mb-3 text-navy-900">Dune</h3>
+          <h3 class="font-bold mb-3 text-[#20214B]">Dune</h3>
 
           <p class="text-gray-700 text-sm mb-6">
-            Corem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit.
+            Professeure de littérature à la retraite, Sylvie possède une
+            sensibilité exceptionnelle aux nuances du langage. Elle excelle dans
+            l'analyse du style, de la voix narrative et du rythme des phrases.
+            Sa lecture minutieuse permet de repérer les répétitions, les
+            maladresses stylistiques et les ruptures de ton. Sans imposer un
+            style académique, elle sait identifier ce qui fonctionne ou non dans
+            la prose d'un auteur et propose des ajustements qui respectent sa
+            voix unique tout en la rendant plus efficace. Particulièrement utile
+            pour les manuscrits littéraires ou les textes où le style occupe une
+            place importante.
           </p>
 
           <div class="flex items-center gap-3 mb-6">
@@ -576,7 +590,7 @@
               <img
                 v-for="i in 2"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -590,12 +604,12 @@
             <button
               class="px-4 py-2 border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-50 text-sm"
             >
-              Voir le projet
+              Se rétracter
             </button>
             <button
-              class="px-4 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 text-sm"
+              class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-emerald-900 text-sm"
             >
-              Continuer la beta lecture
+              Rejoindre le projet
             </button>
           </div>
         </div>

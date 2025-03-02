@@ -1,18 +1,20 @@
 <template>
-  <header class="mb-8">
-    <h1 class="text-3xl font-bold text-navy-900 flex items-center gap-2">
+  <header class="mb-8 p-6">
+    <h1 class="text-3xl font-bold text-[#20214B] flex items-center gap-2">
       Bonjour Hibou
       <span class="text-2xl">👋</span>
     </h1>
   </header>
 
   <!-- Main Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-2 gap-6">
     <!-- Project Funds -->
 
     <div class="rounded-lg bg-white p-6 shadow-sm">
       <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-bold text-navy-900">Argent des les projets</h2>
+        <h2 class="text-2xl font-bold text-[#20214B]">
+          Argent des les projets
+        </h2>
         <NuxtLink to="/details" class="text-teal-600 hover:text-teal-700">
           Voir en détail
         </NuxtLink>
@@ -80,7 +82,7 @@
         </div>
       </div>
       <button
-        class="mt-12 flex items-center gap-2 px-4 py-2 bg-teal-700 text-white rounded-lg hover:bg-emerald-800 transition-colors"
+        class="mt-12 flex items-center gap-2 px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-[#0B5B50] transition-colors"
       >
         <span class="text-lg">+</span>
         Injecter dans le projet
@@ -91,7 +93,7 @@
     <div class="space-y-4">
       <div class="bg-white rounded-lg p-6 shadow-sm">
         <div class="flex justify-between items-start mb-6">
-          <h2 class="text-2xl font-bold text-navy-900">Mon solde</h2>
+          <h2 class="text-2xl font-bold text-[#20214B]">Mon solde</h2>
           <a
             href="#"
             class="text-teal-600 hover:text-teal-700 underline text-sm"
@@ -101,9 +103,9 @@
         </div>
 
         <div class="flex justify-between items-center">
-          <span class="text-4xl font-bold text-navy-900">349,35 €</span>
+          <span class="text-4xl font-bold text-[#20214B]">349,35 €</span>
           <button
-            class="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition-colors flex items-center gap-2"
+            class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-[#0B5B50] transition-colors flex items-center gap-2"
           >
             <span class="text-xl font-bold">+</span>
             <span>Ajouter</span>
@@ -113,18 +115,18 @@
 
       <!-- History Section -->
       <div class="bg-white rounded-lg p-6 shadow-sm">
-        <h2 class="text-2xl font-bold text-navy-900 mb-6">Historique</h2>
+        <h2 class="text-2xl font-bold text-[#20214B] mb-6">Historique</h2>
 
         <!-- Scrollable Content -->
         <div
-          class="pr-4 space-y-4 max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-700 scrollbar-track-gray-200"
+          class="pr-4 space-y-4 max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#0B5B50] scrollbar-track-gray-200"
         >
           <div
             v-for="transaction in transactions"
             :key="transaction.date"
             class="flex justify-between items-center py-2 border-b border-gray-100 last:border-0"
           >
-            <span class="text-navy-900 text-lg">{{ transaction.date }}</span>
+            <span class="text-[#20214B] text-lg">{{ transaction.date }}</span>
             <span class="text-teal-600 font-medium text-lg">{{
               transaction.amount
             }}</span>
@@ -137,7 +139,7 @@
   <!-- Project Section -->
   <div class="mt-8">
     <div class="flex items-center gap-2 mb-6">
-      <h2 class="text-2xl font-bold text-navy-900">Projet P</h2>
+      <h2 class="text-2xl font-bold text-[#20214B]">Projet P</h2>
       <button class="text-gray-400">
         <span class="sr-only">Toggle projet</span>
         <svg
@@ -159,7 +161,7 @@
     <!-- Manuscripts -->
     <div class="bg-white rounded-lg p-6 shadow-sm">
       <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-bold text-navy-900">Manuscrits</h3>
+        <h3 class="text-xl font-bold text-[#20214B]">Manuscrits</h3>
         <a href="#" class="text-teal-600 hover:text-teal-700 text-sm"
           >Voir dans le projet</a
         >
@@ -186,7 +188,7 @@
               <img
                 v-for="i in 2"
                 :key="i"
-                :src="`/images/avatar-${i}.png`"
+                :src="`/images/pp-${i}.jpg`"
                 :alt="`Reader ${i}`"
                 class="w-6 h-6 rounded-full border-2 border-white"
               />
@@ -216,7 +218,7 @@
   <div class="max-w-7xl mx-auto p-6 bg-gray-50">
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold text-navy-900">
+      <h1 class="text-2xl font-bold text-[#20214B]">
         Candidatures
         <span class="text-red-400 text-lg ml-1">(5)</span>
       </h1>
@@ -285,7 +287,7 @@
     </div>
 
     <!-- Applications Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 gap-4">
       <div
         v-for="application in applications"
         :key="application.id"
@@ -295,7 +297,7 @@
         <div class="flex justify-between mb-4">
           <div class="text-sm text-gray-600">
             <span class="text-purple-600">Candidate pour</span>
-            <span class="text-navy-900 font-medium ml-1">{{
+            <span class="text-[#20214B] font-medium ml-1">{{
               application.chapters
             }}</span>
             <span
@@ -322,7 +324,7 @@
             class="w-12 h-12 rounded-full object-cover"
           />
           <div>
-            <h3 class="font-bold text-navy-900">{{ application.name }}</h3>
+            <h3 class="font-bold text-[#20214B]">{{ application.name }}</h3>
             <div class="flex items-center gap-2">
               <div class="flex">
                 <template v-for="n in 5" :key="n">
@@ -362,7 +364,7 @@
             Refuser
           </button>
           <button
-            class="flex-1 px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition-colors text-sm"
+            class="flex-1 px-4 py-2 bg-[#0B5B50] text-white rounded-lg hover:bg-[#0B5B50] transition-colors text-sm"
           >
             Accepter la candidature
           </button>
@@ -378,6 +380,7 @@ import { ref } from "vue";
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 
 interface Transaction {
@@ -406,31 +409,31 @@ const transactions = ref<Transaction[]>([
 
 const manuscripts = ref<Manuscript[]>([
   {
-    number: "00",
-    title: "Titre du manuscrit",
+    number: "04",
+    title: "PAR L’EMBRASURE",
     status: "(En correction)",
-    date: "00/00/00",
+    date: "16/02/25",
     corrections: "1",
   },
   {
-    number: "00",
-    title: "Titre du manuscrit",
+    number: "03",
+    title: "LA COLOMBE ET LE LOUP",
     status: "(En correction)",
-    date: "00/00/00",
+    date: "03/01/25",
     corrections: "8",
   },
   {
-    number: "00",
-    title: "Titre du manuscrit",
-    status: "(En correction)",
-    date: "00/00/00",
+    number: "02",
+    title: "CEUX DE LA LUNE",
+    status: "(Terminé)",
+    date: "12/09/24",
     corrections: "12",
   },
   {
-    number: "00",
-    title: "Titre du manuscrit",
-    status: "(En correction)",
-    date: "00/00/00",
+    number: "01",
+    title: "À L’HORIZON",
+    status: "(Terminé)",
+    date: "09/09/24",
     corrections: "5",
   },
 ]);
@@ -472,40 +475,40 @@ const applications = ref<Application[]>([
     id: 1,
     chapters: "Chapitres 3 - 15",
     tag: "Orthographe",
-    avatar: "/images/profil-picture-2.png",
+    avatar: "/images/pp-5.jpg",
     name: "Romain I.",
     rating: 3,
     totalReviews: 24,
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Professeure de littérature à la retraite, Sylvie possède une sensibilité exceptionnelle aux nuances du langage. Elle excelle dans l'analyse du style, de la voix narrative et du rythme des phrases. Sa lecture minutieuse permet de repérer les répétitions, les maladresses stylistiques et les ruptures de ton. Sans imposer un style académique, elle sait identifier ce qui fonctionne ou non dans la prose d'un auteur et propose des ajustements qui respectent sa voix unique tout en la rendant plus efficace. Particulièrement utile pour les manuscrits littéraires ou les textes où le style occupe une place importante.",
   },
   {
     id: 2,
     chapters: "Chapitres 1 - 7",
     tag: "Cohérence",
-    avatar: "/images/profil-picture-1.png",
+    avatar: "/images/pp-4.jpg",
     name: "Nolwenn T.",
     rating: 3,
     totalReviews: 24,
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "À 16 ans, Thomas représente parfaitement le public adolescent visé par votre roman young adult. Grand consommateur de littérature pour jeunes adultes, de séries Netflix et de contenus TikTok, il est au fait des préoccupations, du langage et des références culturelles de sa génération. Sa lecture permettra de vérifier si les dialogues sonnent juste, si les thématiques abordées résonnent avec le public cible et si l'intrigue maintient l'intérêt d'un lecteur de son âge. Son feedback franc et direct vous donnera un aperçu précieux de la réception potentielle de votre œuvre auprès de son public prioritaire.",
   },
   {
     id: 3,
     chapters: "Chapitre 16",
     tag: "Commentaire",
-    avatar: "/images/profil-picture-3.png",
+    avatar: "/images/pp-3.jpg",
     name: "Romain I.",
     rating: 3,
     totalReviews: 24,
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Chirurgienne de profession, Caroline mettra son expertise médicale au service de votre thriller médical. Elle vérifiera l'exactitude des procédures décrites, la plausibilité des diagnostics et la cohérence des situations d'urgence représentées. Son regard professionnel permettra d'éviter les erreurs factuelles qui pourraient nuire à la crédibilité de votre récit auprès des lecteurs informés. Elle saura également suggérer des détails techniques qui enrichiront l'authenticité de vos scènes sans tomber dans un jargon excessif qui pourrait rebuter le lecteur moyen.",
   },
   {
     id: 4,
     chapters: "Chapitres 8 - 12",
     tag: "Orthographe",
-    avatar: "/images/profil-picture-2.png",
+    avatar: "/images/pp-6.jpg",
     name: "Laurent U.",
     rating: 3,
     totalReviews: 24,
@@ -516,12 +519,12 @@ const applications = ref<Application[]>([
     id: 5,
     chapters: "Chapitre 6",
     tag: "Scénario",
-    avatar: "/images/profil-picture-1.png",
+    avatar: "/images/pp-8.jpg",
     name: "Laurent U.",
     rating: 3,
     totalReviews: 24,
     description:
-      "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "Féru de polars et de thrillers, Rachid a développé un talent particulier pour analyser la structure des intrigues complexes. Il évalue la logique interne du récit, la gestion du suspense et l'équilibre entre indices et fausses pistes. Particulièrement attentif à la résolution finale, il saura vous dire si vos révélations sont satisfaisantes ou prévisibles, si vos retournements de situation sont crédibles ou forcés. Son feedback se concentre sur la mécanique narrative et la satisfaction intellectuelle que procure une intrigue bien ficelée.",
   },
 ]);
 

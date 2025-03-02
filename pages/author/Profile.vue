@@ -9,10 +9,13 @@ const activeBadges = ref([
   { name: "Vérifié.e" },
   { name: "Bilingue" },
   { name: "Multi-projets" },
-  { name: "Contre-stonks" },
 ]);
 
-const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
+const inactiveBadges = ref([
+  { name: "Stonks" },
+  { name: "Vacances" },
+  { name: "Contre-stonks" },
+]);
 
 // On n'a plus besoin d'une référence reactive pour les commentaires
 // car ils sont maintenant codés en dur dans le template pour
@@ -24,7 +27,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
     <!-- Profile Header -->
     <div class="flex items-center gap-4 mb-8">
       <img
-        src="/public/images/profil-picture-1.png"
+        src="/public/images/pp-13.jpg"
         alt="Profile"
         class="w-16 h-16 rounded-full object-cover"
       />
@@ -34,9 +37,9 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
       <!-- Description Section -->
-      <div class="bg-white rounded-lg p-6 shadow-sm">
+      <div class="bg-white rounded-xl p-6 shadow-sm col-span-2 h-fit">
         <h2 class="text-xl font-bold text-navy-900 mb-4">Description</h2>
         <p class="text-gray-700 mb-4">
           Je suis Marie On, autrice passionnée par les mondes fantastiques et
@@ -65,16 +68,28 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
       </div>
 
       <!-- Badges Section -->
-      <div class="bg-white rounded-lg p-6 shadow-sm">
+      <div class="bg-white rounded-xl p-6 shadow-sm">
         <h2 class="text-xl font-bold text-navy-900 mb-4">Badges (8)</h2>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-2">
           <!-- Active Badges -->
           <div
             v-for="badge in activeBadges"
             :key="badge.name"
             class="flex flex-col items-center p-2"
           >
-            <div class="w-12 h-12 bg-navy-900 rounded-lg mb-2"></div>
+            <svg
+              width="30"
+              height="38"
+              viewBox="0 0 30 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 0.666992L0 7.33366V17.3337C0 26.5837 6.4 35.2337 15 37.3337C23.6 35.2337 30 26.5837 30 17.3337V7.33366L15 0.666992Z"
+                fill="#20214B"
+              />
+            </svg>
+
             <span class="text-sm text-center text-gray-700">{{
               badge.name
             }}</span>
@@ -85,7 +100,18 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
             :key="badge.name"
             class="flex flex-col items-center p-2"
           >
-            <div class="w-12 h-12 bg-gray-300 rounded-lg mb-2"></div>
+            <svg
+              width="30"
+              height="38"
+              viewBox="0 0 30 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 0.666992L0 7.33366V17.3337C0 26.5837 6.4 35.2337 15 37.3337C23.6 35.2337 30 26.5837 30 17.3337V7.33366L15 0.666992Z"
+                fill="#ABC2C7"
+              />
+            </svg>
             <span class="text-sm text-center text-gray-500">{{
               badge.name
             }}</span>
@@ -95,7 +121,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
     </div>
 
     <!-- Comments Section -->
-    <div class="mt-8 bg-white rounded-lg p-6 shadow-sm">
+    <div class="mt-8 bg-white rounded-xl p-6 shadow-sm">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-3xl font-bold text-navy-900">Commentaires</h2>
         <div class="flex items-center">
@@ -129,7 +155,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-3">
               <img
-                src="/public/images/avatar-1.png"
+                src="/public/images/pp-1.jpg"
                 alt="Marion R"
                 class="w-10 h-10 rounded-full"
               />
@@ -238,7 +264,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-3">
               <img
-                src="/public/images/avatar-1.png"
+                src="/public/images/pp-3.jpg"
                 alt="Luila Quiaicri"
                 class="w-10 h-10 rounded-full"
               />
@@ -347,7 +373,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-3">
               <img
-                src="/public/images/avatar-1.png"
+                src="/public/images/pp-8.jpg"
                 alt="Loteuria"
                 class="w-10 h-10 rounded-full"
               />
@@ -461,12 +487,12 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
       <!-- Filtres -->
       <div class="flex gap-2 mb-6">
         <button
-          class="px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium"
+          class="px-4 py-2 rounded-full bg-[#CBF4EA] text-green-800 text-sm font-medium"
         >
           En cours (1)
         </button>
         <button
-          class="px-4 py-2 rounded-full bg-teal-100 text-teal-800 text-sm font-medium"
+          class="px-4 py-2 rounded-full bg-[#CBF4EA] text-green-800 text-sm font-medium"
         >
           Terminés (2)
         </button>
@@ -479,7 +505,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
           <img
             src="/public/images/cover.png"
             alt="Ceux Qui Servent"
-            class="w-32 h-32 object-cover rounded-lg"
+            class="w-32 h-38 object-cover rounded-lg"
           />
           <div class="flex-1">
             <div class="flex items-center mb-2">
@@ -489,15 +515,15 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
 
             <div class="flex gap-2 mb-3">
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Magie</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Animaux fantastiques</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Rébellion</span
               >
             </div>
@@ -512,12 +538,12 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
             <div class="flex items-center">
               <div class="flex -space-x-2">
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-1.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-6.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />
@@ -532,9 +558,9 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
         <!-- Projet 2 -->
         <div class="flex gap-4">
           <img
-            src="/public/images/cover.png"
+            src="/public/images/tarot.png"
             alt="Tarot"
-            class="w-32 h-32 object-cover rounded-lg"
+            class="w-32 h-38 object-cover rounded-lg"
           />
           <div class="flex-1">
             <div class="flex items-center mb-2">
@@ -544,15 +570,15 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
 
             <div class="flex gap-2 mb-3">
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Fantastique</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Objets magiques</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Aventure</span
               >
             </div>
@@ -567,12 +593,12 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
             <div class="flex items-center">
               <div class="flex -space-x-2">
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-13.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-5.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />
@@ -587,9 +613,9 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
         <!-- Projet 3 -->
         <div class="flex gap-4">
           <img
-            src="/public/images/cover.png"
+            src="/public/images/dune.png"
             alt="Dune"
-            class="w-32 h-32 object-cover rounded-lg"
+            class="w-32 h-38 object-cover rounded-lg"
           />
           <div class="flex-1">
             <div class="flex items-center mb-2">
@@ -599,19 +625,19 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
 
             <div class="flex gap-2 mb-3">
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Science-fiction</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Désert</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Rébellion</span
               >
               <span
-                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-md"
+                class="px-3 py-1 bg-[#D6E3E2] text-[#384273] text-sm rounded-md"
                 >Prophétie</span
               >
             </div>
@@ -626,12 +652,12 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
             <div class="flex items-center">
               <div class="flex -space-x-2">
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-9.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />
                 <img
-                  src="/public/images/avatar-1.png"
+                  src="/public/images/pp-10.jpg"
                   alt="Lecteur"
                   class="w-6 h-6 rounded-full border border-white"
                 />

@@ -30,11 +30,11 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
       />
       <div>
         <h1 class="text-2xl font-bold text-navy-900">Marie On 💝</h1>
-        <p class="text-gray-600">Beta lecteur.trice</p>
+        <p class="text-gray-600">Bêta-lecteur.trice</p>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-2 gap-6">
       <!-- Description Section -->
       <div class="bg-white rounded-lg p-6 shadow-sm">
         <h2 class="text-xl font-bold text-navy-900 mb-4">Description</h2>
@@ -123,7 +123,7 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
       </div>
 
       <!-- Comments List -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-3 gap-4">
         <!-- Comment 1 -->
         <div class="bg-gray-50 rounded-lg p-4 relative">
           <div class="flex justify-between items-start mb-3">

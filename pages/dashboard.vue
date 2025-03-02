@@ -1,7 +1,10 @@
 <template>
   <div
     class="max-w-7xl mx-auto transition-all duration-300"
-    :class="props.isSidebarOpen ? 'ml-64 mr-64' : 'ml-16 mr-64'"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
+    ]"
   >
     <DashboardAuthorDashboard
       v-if="props.isAuthorMode"
@@ -17,6 +20,7 @@ import { ref } from "vue";
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 
 interface Transaction {

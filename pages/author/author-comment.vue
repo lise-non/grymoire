@@ -1,12 +1,22 @@
 <template>
   <div
     class="flex h-screen bg-gray-100 max-w-7xl mx-auto transition-all duration-300"
-    :class="props.isSidebarOpen ? 'ml-64' : 'ml-16'"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
+    ]"
   >
     <main class="flex-1 p-6" v-if="manuscrit[0]">
-      <header class="mb-6">
-        <h1 class="text-2xl font-bold">08 {{ manuscrit[0].title }}</h1>
-        <p class="text-gray-500">Chapitre 8 - {{ manuscrit[0].title }}</p>
+      <header class="mb-6 flex justify-between">
+        <div>
+          <h1 class="text-2xl font-bold">01-2 {{ manuscrit[0].title }}</h1>
+          <p class="text-gray-500">Chapitre 1-2 - {{ manuscrit[0].title }}</p>
+        </div>
+        <button
+          class="bg-[#0B5B50] px-4 py-2 bg-[#0B5B50] text-white rounded-md"
+        >
+          Clôturer le manuscrit
+        </button>
       </header>
       <TextEditor
         ref="textEditor"
@@ -172,6 +182,7 @@ const user = ref();
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 
 const content = computed(() => {

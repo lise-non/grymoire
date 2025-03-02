@@ -46,7 +46,7 @@
           />
         </div>
         <span class="text-sm text-gray-600">
-          {{ mission.betaReaders.count }} bêta lecteurs travaillent actuellement
+          {{ mission.betaReaders.count }} bêta-lecteurs travaillent actuellement
           sur cette mission
         </span>
       </div>

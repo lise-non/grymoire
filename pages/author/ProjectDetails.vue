@@ -1,5 +1,11 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div
+    class="min-h-screen bg-gray-50 py-6"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
+    ]"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       <!-- Hero Section avec les détails du livre -->
       <div class="bg-white shadow mb-6 rounded-lg">
@@ -18,7 +24,7 @@
             <div class="w-full md:w-3/4">
               <div class="flex justify-between items-start">
                 <div>
-                  <h1 class="text-3xl font-bold text-navy-900">
+                  <h1 class="text-3xl font-bold text-[#20214B]">
                     Ceux Qui Servent
                     <span class="text-sm text-red-400 ml-2">(En cours)</span>
                   </h1>
@@ -28,17 +34,21 @@
                 <div class="flex space-x-2">
                   <button class="p-2 hover:bg-gray-100 rounded-full">
                     <svg
-                      class="w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
+                      width="23"
+                      height="23"
+                      viewBox="0 0 23 23"
                       fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M3 3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H19C19.5523 21 20 20.5523 20 20V10.5714C20 10.0191 20.4477 9.57143 21 9.57143C21.5523 9.57143 22 10.0191 22 10.5714V20C22 21.6569 20.6569 23 19 23H3C1.34315 23 0 21.6569 0 20V4C0 2.34315 1.34315 1 3 1H12.4286C12.9809 1 13.4286 1.44772 13.4286 2C13.4286 2.55228 12.9809 3 12.4286 3H3Z"
+                        fill="#20214B"
+                      />
+                      <path
+                        d="M22.71 4.0425C23.1 3.6525 23.1 3.0025 22.71 2.6325L20.37 0.2925C20 -0.0975 19.35 -0.0975 18.96 0.2925L17.12 2.1225L20.87 5.8725M5 14.2525V18.0025H8.75L19.81 6.9325L16.06 3.1825L5 14.2525Z"
+                        fill="#20214B"
                       />
                     </svg>
                   </button>
@@ -64,15 +74,15 @@
               <!-- Tags -->
               <div class="flex gap-2 mt-4">
                 <span
-                  class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                  class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
                   >Magie</span
                 >
                 <span
-                  class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                  class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
                   >Animaux fantastiques</span
                 >
                 <span
-                  class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                  class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
                   >Rébellion</span
                 >
               </div>
@@ -92,12 +102,12 @@
               <div class="mt-6 flex items-center gap-2">
                 <div class="flex -space-x-2">
                   <img
-                    src="/public/images/avatar-2.png"
+                    src="/public/images/pp-7.jpg"
                     class="w-8 h-8 rounded-full border-2 border-white"
                     alt="Beta reader"
                   />
                   <img
-                    src="/public/images/avatar-1.png"
+                    src="/public/images/pp-1.jpg"
                     class="w-8 h-8 rounded-full border-2 border-white"
                     alt="Beta reader"
                   />
@@ -116,12 +126,14 @@
       <div class="bg-white rounded-lg shadow">
         <div class="p-6">
           <div class="flex justify-between items-center">
-            <h2 class="text-2xl font-semibold text-navy-900">Beta lecteurs</h2>
-            <button
-              class="bg-emerald-700 text-white px-4 py-2 rounded-lg hover:bg-emerald-800 transition-colors"
-            >
-              Gérer les collaborateurs
-            </button>
+            <h2 class="text-2xl font-semibold text-[#20214B]">Bêta-lecteurs</h2>
+            <NuxtLink to="Collaborators">
+              <button
+                class="bg-[#0B5B50] text-white px-4 py-2 rounded-lg hover:bg-emerald-800 transition-colors"
+              >
+                Gérer les collaborateurs
+              </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -129,7 +141,7 @@
       <div class="bg-white rounded-lg shadow p-6">
         <!-- En-tête Missions -->
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-semibold text-navy-900">
+          <h2 class="text-2xl font-semibold text-[#20214B]">
             Missions
             <span class="text-sm text-gray-500 ml-1">(7)</span>
           </h2>
@@ -172,18 +184,20 @@
           >
             Commentaire (0)
           </span>
-          <span class="px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-700">
+          <span
+            class="px-3 py-1 rounded-full text-sm bg-[#D6E3E2] text-[#384273]"
+          >
             Ouvertes (4)
           </span>
           <span
-            class="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700"
+            class="px-3 py-1 rounded-full text-sm bg-[#D6E3E2] text-[#384273]"
           >
             Fermées (3)
           </span>
         </div>
 
         <!-- Grid des missions -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4">
           <!-- Carte Ajouter une mission -->
           <div class="bg-emerald-100 rounded-lg p-8">
             <div class="flex flex-col items-center justify-center h-full">
@@ -235,7 +249,7 @@
             <div class="flex items-center gap-2 mb-4">
               <div class="flex -space-x-2">
                 <img
-                  v-for="(reader, index) in mission.betaReaders.avatars"
+                  v-for="(reader, index) in mission.betaReaders.pps"
                   :key="index"
                   :src="reader"
                   :alt="'Beta lecteur'"
@@ -260,7 +274,7 @@
                 </span>
               </button>
               <button
-                class="px-4 py-2 bg-emerald-700 text-white rounded-lg text-sm hover:bg-emerald-800"
+                class="px-4 py-2 bg-[#0B5B50] text-white rounded-lg text-sm hover:bg-emerald-800"
               >
                 Voir les Beta.lecteurs
               </button>
@@ -271,7 +285,7 @@
       <div class="bg-white rounded-lg shadow p-6">
         <!-- En-tête -->
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-semibold text-navy-900">
+          <h2 class="text-2xl font-semibold text-[#20214B]">
             Gérer les manuscrits
             <span class="text-sm text-gray-500 ml-1">(8)</span>
           </h2>
@@ -310,26 +324,28 @@
         </div>
 
         <!-- Bouton Ajouter -->
-        <div
-          class="bg-emerald-100 rounded-lg p-4 mb-6 cursor-pointer hover:bg-emerald-50 transition-colors"
-        >
-          <div class="flex items-center gap-2 text-emerald-700">
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            <span class="font-medium">Ajouter un manuscrit</span>
+        <NuxtLink to="../NewManuscrit">
+          <div
+            class="bg-emerald-100 rounded-lg p-4 mb-6 hover:bg-emerald-50 transition-colors"
+          >
+            <div class="flex items-center gap-2 text-[#0B5B50]">
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              <span class="font-medium">Ajouter un manuscrit</span>
+            </div>
           </div>
-        </div>
+        </NuxtLink>
 
         <!-- Liste des manuscrits -->
         <div class="space-y-2">
@@ -404,6 +420,11 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  isSidebarOpen: Boolean,
+  isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
+});
 const missions = ref([
   {
     id: 1,
@@ -411,10 +432,10 @@ const missions = ref([
     chapters: "Chapitres 12 - 16",
     price: "0.5 € / Page",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit.",
+      "Cette romance contemporaine joue sur l'alternance des points de vue entre les deux protagonistes. Votre mission est d'évaluer si chaque personnage possède une voix narrative distincte et authentique. Les perspectives différentes sur les mêmes événements enrichissent-elles la compréhension des relations ou créent-elles des redondances ? Nous attendons des suggestions pour renforcer l'unicité de chaque point de vue.",
     betaReaders: {
       count: 2,
-      avatars: ["/images/avatar-1.png", "/images/avatar-3.png"],
+      pps: ["/images/pp-4.jpg", "/images/pp-12.jpg"],
     },
     applications: 3,
   },
@@ -424,10 +445,10 @@ const missions = ref([
     chapters: "Chapitres 12 - 16",
     price: "0.5 € / Page",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit.",
+      "Pour ce manuscrit de fantasy urbaine, nous recherchons un regard critique sur l'intégration des éléments fantastiques dans un cadre contemporain. Évaluez si la coexistence du surnaturel et du quotidien est crédible et cohérente. Les réactions des personnages face aux phénomènes extraordinaires sont-elles réalistes ? L'équilibre entre familiarité du monde moderne et étrangeté des éléments fantastiques est-il réussi ?",
     betaReaders: {
       count: 2,
-      avatars: ["/images/avatar-4.png", "/images/avatar-2.png"],
+      pps: ["/images/pp-9.jpg", "/images/pp-8.jpg"],
     },
     applications: 3,
   },
@@ -442,82 +463,42 @@ const missionTypeStyles = {
 
 const manuscripts = ref([
   {
-    id: 8,
-    number: 8,
-    title: "Titre du manuscrit",
-    date: "16/06/2024",
-    corrections: "13 corrections validées",
-    status: "En correction",
-    notificationCount: 3,
-    isComplete: false,
-  },
-  {
-    id: 7,
-    number: 7,
-    title: "Titre du manuscrit",
-    date: "14/06/2024",
-    corrections: "52 corrections validées",
-    status: "En correction",
-    notificationCount: 3,
-    isComplete: false,
-  },
-  {
-    id: 6,
-    number: 6,
-    title: "Titre du manuscrit",
-    date: "08/06/2024",
-    corrections: "84 corrections validées",
-    status: "En correction",
-    notificationCount: null,
-    isComplete: false,
-  },
-  {
-    id: 5,
-    number: 5,
-    title: "Titre du manuscrit",
-    date: "00/00/00",
-    corrections: "123 corrections validées",
-    status: "",
-    notificationCount: null,
-    isComplete: true,
-  },
-  {
     id: 4,
     number: 4,
-    title: "Titre du manuscrit",
-    date: "00/00/00",
+    title: "PAR L’EMBRASURE",
+    status: "En correction",
+    date: "16/02/25",
     corrections: "214 corrections validées",
-    status: "",
     notificationCount: null,
-    isComplete: true,
+    isComplete: false,
   },
   {
     id: 3,
     number: 3,
-    title: "Titre du manuscrit",
-    date: "00/00/00",
+    title: "CEUX DE LA LUNE",
+    status: "Terminé",
+    date: "12/09/24",
     corrections: "169 corrections validées",
-    status: "",
     notificationCount: null,
     isComplete: true,
   },
   {
     id: 2,
     number: 2,
-    title: "Titre du manuscrit",
-    date: "00/00/00",
+    title: "PAR L’EMBRASURE",
+    status: "En correction",
+    date: "16/02/25",
     corrections: "284 corrections validées",
-    status: "",
     notificationCount: null,
     isComplete: true,
   },
   {
     id: 1,
     number: 1,
-    title: "Titre du manuscrit",
-    date: "00/00/00",
+    title: "À L’HORIZON",
+    status: "Terminé",
+    date: "09/09/24",
     corrections: "148 corrections validées",
-    status: "",
     notificationCount: null,
     isComplete: true,
   },

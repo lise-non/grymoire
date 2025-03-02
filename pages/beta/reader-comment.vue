@@ -1,12 +1,17 @@
 <template>
   <div
     class="flex h-screen bg-gray-100 max-w-7xl mx-auto transition-all duration-300"
-    :class="props.isSidebarOpen ? 'ml-64' : 'ml-16'"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
+    ]"
   >
     <!-- Main Content -->
-    <main class="flex-1 p-6" v-if="manuscrit[0]">
+    <main class="flex-1 p-6 overflow-auto" v-if="manuscrit[0]">
       <header class="mb-6">
-        <h1 class="text-2xl font-bold">08 {{ manuscrit[0].title }}</h1>
+        <h1 class="text-2xl font-bold text-[#20214B]">
+          08 {{ manuscrit[0].title }}
+        </h1>
         <p class="text-gray-500">Chapitre 8 - {{ manuscrit[0].title }}</p>
       </header>
       <section class="bg-white p-6 rounded-lg shadow">
@@ -14,7 +19,14 @@
           <span
             v-for="(segment, index) in highlightedSegments"
             :key="index"
-            :class="{ 'bg-yellow-200': segment.highlight }"
+            :class="{
+              'bg-[#FDC4CB]':
+                segment.highlight && segment.type === 'Orthographe',
+              'bg-[#FFE484]': segment.highlight && segment.type === 'Scenario',
+              'bg-[#F8B67A]': segment.highlight && segment.type === 'Coherence',
+              'bg-[#0E7265] text-white':
+                segment.highlight && segment.type === 'Commentaire',
+            }"
             class="text-gray-700 leading-loose"
           >
             {{ segment.text.replace(/<[^>]*>/g, "") }}
@@ -43,14 +55,14 @@
         class="tooltip"
         :style="{
           top: tooltipPosition.top + 'px',
-          left: props.sidebarOpen
-            ? tooltipPosition.left + 'px'
-            : tooltipPosition.left + 'px' + '300px',
+          left: tooltipPosition.left + (props.isSidebarOpen ? 64 : 16) + 'px',
         }"
       >
         <form @submit.prevent="addFeedback">
           <div>
-            <span class="text-gray-700 font-semibold">Votre retour</span>
+            <span class="text-gray-700 font-semibold text-[#20214B]"
+              >Votre retour</span
+            >
             <div class="flex space-x-4 mt-2 overflow-auto">
               <button
                 type="button"
@@ -125,20 +137,24 @@
     </div>
 
     <!-- Comments Sidebar -->
-    <aside class="bg-white w-1/3 p-6 shadow-lg border-l">
+    <aside class="bg-white w-1/3 p-6 shadow-lg border-l overflow-auto">
       <h2 class="text-lg font-bold">
         Vos retours
         <span class="bg-[#0E7265] text-white p-1 rounded-md text-xs">{{
           feedbacks.length
         }}</span>
       </h2>
-      <div class="overflow-y-scroll">
+      <div class="overflow-auto">
         <ul class="mt-4 space-y-4">
           <li
             v-for="feedback in feedbacks"
             :key="feedback.id"
             @mouseover="
-              highlight(feedback.position.start, feedback.position.end)
+              highlightAndScrollTo(
+                feedback.position.start,
+                feedback.position.end,
+                feedback.type_comment
+              )
             "
             @mouseleave="resetSegments"
             class="bg-gray-100 p-4 rounded-lg"
@@ -226,7 +242,7 @@ const user = ref();
 
 // Tooltip
 const isTooltipVisible = ref(false);
-const tooltipPosition = ref({ top: 0, left: 0 });
+const tooltipPosition = ref({ top: 0, left: 10 });
 const tooltipRef = ref(null);
 
 const handleOutsideClick = (event) => {
@@ -238,6 +254,7 @@ const handleOutsideClick = (event) => {
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 
 // Nouveau commentaire
@@ -263,10 +280,9 @@ const handleTextSelection = () => {
 
     // Mise à jour des positions du tooltip
     tooltipPosition.value = {
-      top: rect.top + window.scrollY + 50,
-      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY + 50, // Slightly above the selected text
+      left: rect.left + window.scrollX - (props.isSidebarOpen ? 50 : 0),
     };
-
     // Store the actual selected text
     newComment.value.selectedText = selection.toString();
 
@@ -298,14 +314,39 @@ const addFeedback = (isDraft) => {
 };
 
 // Gestion du surlignage
-const highlight = (start, end) => {
+const highlight = (start, end, type) => {
   const text = manuscrit.value[0].normalized_text.replace(/<[^>]*>/g, "");
 
   highlightedSegments.value = [
     { text: text.slice(0, start), highlight: false },
-    { text: text.slice(start, end), highlight: true },
+    { text: text.slice(start, end), highlight: true, type: type },
     { text: text.slice(end), highlight: false },
   ];
+};
+
+// Surligne et fait défiler jusqu'à la position du commentaire
+const highlightAndScrollTo = (start, end, type) => {
+  highlight(start, end, type);
+
+  // Attendre que Vue mette à jour le DOM
+  setTimeout(() => {
+    // Trouver tous les spans
+    const spans = document.querySelectorAll("section span");
+
+    // Trouver le span surligné (celui qui contient le texte commenté)
+    for (let i = 0; i < spans.length; i++) {
+      if (
+        spans[i].classList.contains("bg-[#FDC4CB]") ||
+        spans[i].classList.contains("bg-[#FFE484]") ||
+        spans[i].classList.contains("bg-[#F8B67A]") ||
+        spans[i].classList.contains("bg-[#0E7265]")
+      ) {
+        // Faire défiler jusqu'à cet élément avec une animation fluide
+        spans[i].scrollIntoView({ behavior: "smooth", block: "center" });
+        break;
+      }
+    }
+  }, 50); // Un petit délai pour s'assurer que le DOM est mis à jour
 };
 
 const resetSegments = () => {
@@ -350,7 +391,7 @@ const getUserInfo = async () => {
   const { data, error } = await $supabase
     .from("User")
     .select("*")
-    .eq("user_id", "52042518-ae3a-483f-836f-8e0b4d752bb5");
+    .eq("user_id", "034121ae-c44f-44fd-ad93-219b368406aa");
 
   if (error) {
     console.error(error.message);
@@ -446,9 +487,5 @@ onMounted(() => {
   z-index: 1000;
   width: fit-content;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.highlight {
-  background-color: yellow;
 }
 </style>

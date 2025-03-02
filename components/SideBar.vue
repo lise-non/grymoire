@@ -6,14 +6,55 @@
     aria-label="Sidebar"
   >
     <!-- Header with Logo and Title -->
-    <div class="w-full px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2 text-white">
-        <span v-if="open" class="text-2xl font-semibold">G</span>
-        <span v-if="open" class="text-xl">Grymoires</span>
+    <div class="w-full px-6 py-4 flex flex-col items-center">
+      <!-- Logo section -->
+      <div class="w-full flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2 text-white">
+          <!-- G Logo -->
+          <svg
+            width="26"
+            height="36"
+            viewBox="0 0 26 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.3658 13.4101V22.9591C25.3658 29.7775 19.8186 35.3246 13.0003 35.3246C6.1819 35.3246 0.634766 29.7775 0.634766 22.9591V9.63831C0.634766 7.25504 1.55949 5.01143 3.23874 3.32078C4.9188 1.63095 7.1563 0.690748 9.53835 0.675682C11.944 0.662245 14.2084 1.58412 15.9145 3.27965C17.6206 4.97519 18.5608 7.23305 18.5608 9.63872V11.1596H14.059V9.63872C14.059 8.44118 13.5915 7.31652 12.7417 6.47324C11.9001 5.63687 10.7844 5.17675 9.59862 5.17675H9.56808C7.12454 5.19303 5.13664 7.19437 5.13664 9.63872V22.9595C5.13664 27.2956 8.66412 30.8231 13.0003 30.8231C17.3364 30.8231 20.8639 27.2956 20.8639 22.9595V17.912H11.7567V21.2432C11.7567 21.8772 12.2718 22.3931 12.9054 22.3947H12.9083C13.3224 22.3947 13.5952 22.1842 13.7214 22.058C13.8476 21.9318 14.059 21.6589 14.059 21.2432V20.1572H18.5608V21.2432C18.5608 22.7559 17.9712 24.1766 16.9007 25.245C15.8302 26.3127 14.4067 26.9007 12.8952 26.8962C9.78552 26.8889 7.25525 24.3529 7.25525 21.2428V13.4097H14.0594V13.4044H18.5613V13.4097H25.3662L25.3658 13.4101Z"
+              fill="white"
+            />
+          </svg>
+
+          <!-- Title -->
+          <span v-if="open" class="text-3xl font-semibold">Grymoires</span>
+        </div>
+
+        <!-- Toggle Button on same line when expanded -->
+        <button
+          v-if="open"
+          @click="toggleSidebar(!open)"
+          class="text-white hover:bg-[#353b82] p-1 rounded-lg"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            :class="{ 'rotate-180': !open }"
+          >
+            <path
+              d="M18 20H20V0H18V9H3.83L9.33 3.5L7.92 2.08L0 10L7.92 17.92L9.33 16.5L3.83 11H18V20Z"
+              fill="#ffffff"
+            />
+          </svg>
+        </button>
       </div>
+
+      <!-- Toggle Button stacked when collapsed -->
       <button
+        v-if="!open"
         @click="toggleSidebar(!open)"
-        class="text-white hover:bg-[#353b82] p-1 rounded-lg"
+        class="text-white hover:bg-[#353b82] p-1 rounded-lg my-4"
       >
         <svg
           width="20"
@@ -29,11 +70,20 @@
           />
         </svg>
       </button>
-    </div>
 
-    <!-- Role Title and Mode Toggle -->
-    <div class="w-full px-6 py-4">
-      <div class="flex items-center text-white gap-3">
+      <!-- User Role -->
+      <div v-if="open" class="w-full text-white mt-1">
+        <p class="text-sm">
+          {{ isAuthorMode ? "Auteur.trice" : "Bêta-lecteur.trice" }}
+        </p>
+      </div>
+
+      <!-- Mode Toggle with Label Above -->
+      <div v-if="open" class="w-full mt-6">
+        <p class="text-white text-sm mb-2">
+          Mode
+          {{ isAuthorMode ? "Auteur.trice" : "Bêta-lecteur.trice" }}
+        </p>
         <label class="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
@@ -45,10 +95,25 @@
             class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-emerald-500 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"
           ></div>
         </label>
-        <span v-if="open" class="text-sm">{{
-          isAuthorMode ? "Auteur.trice" : "Bêta-lecteur.trice"
-        }}</span>
       </div>
+
+      <!-- Just the switch visible when collapsed -->
+      <div v-else class="mt-4">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            :checked="isAuthorMode"
+            @change="toggleMode"
+            class="sr-only peer"
+          />
+          <div
+            class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-emerald-500 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"
+          ></div>
+        </label>
+      </div>
+
+      <!-- Divider -->
+      <div class="w-full mt-6 mb-2 border-t border-gray-600"></div>
     </div>
 
     <!-- Navigation Content -->
@@ -61,6 +126,7 @@
             <NuxtLink
               to="/dashboard"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="20"
@@ -91,6 +157,7 @@
             <NuxtLink
               to="/search"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="18"
@@ -112,6 +179,7 @@
             <NuxtLink
               to="/Projects"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="16"
@@ -134,6 +202,7 @@
             <NuxtLink
               to="/NewProject"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="19"
@@ -155,6 +224,7 @@
             <NuxtLink
               to="/applications"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="24"
@@ -182,6 +252,7 @@
             <NuxtLink
               to="/profile"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="16"
@@ -205,6 +276,7 @@
             <NuxtLink
               to="/saved"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="20"
@@ -228,6 +300,7 @@
             <NuxtLink
               to="/bank"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="20"
@@ -249,6 +322,7 @@
             <NuxtLink
               to="messages/chat"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="20"
@@ -272,6 +346,7 @@
             <NuxtLink
               to="/messages"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
+              :class="{ 'justify-center': !open }"
             >
               <svg
                 width="20"
@@ -332,7 +407,7 @@ const toggleMode = () => {
 </script>
 
 <style scoped>
-span {
-  font-size: small;
+#title {
+  font-size: inherit;
 }
 </style>

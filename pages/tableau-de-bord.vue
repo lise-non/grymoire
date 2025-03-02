@@ -3,7 +3,10 @@
   <div class="flex min-h-screen">
     <main
       class="flex-grow transition-all duration-300 bg-gray-100"
-      :class="props.isSidebarOpen ? 'ml-64' : 'ml-16'"
+      :class="[
+        props.isSidebarOpen ? 'ml-64' : 'ml-16',
+        props.isNotificationSidebarOpen ? 'mr-64' : 'mr-16',
+      ]"
     >
       <div v-if="props.isAuthorMode">
         <h2>Mode Auteur</h2>
@@ -28,6 +31,7 @@ import authorComment from "./author/author-comment.vue";
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 
 // Watch for mode changes if you need to perform additional actions

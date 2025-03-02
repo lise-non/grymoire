@@ -1,7 +1,10 @@
 <template>
   <div
     class="max-w-7xl mx-auto transition-all duration-300"
-    :class="props.isSidebarOpen ? 'ml-64 mr-64' : 'ml-16 mr-64'"
+    :class="[
+      props.isSidebarOpen ? 'ml-64' : 'ml-16',
+      props.isNotificationSidebarOpen ? 'mr-64' : 'mr-16',
+    ]"
   >
     <!-- Project Header -->
     <div class="flex gap-6 mb-8 bg-white rounded-3xl shadow-sm p-8 mb-6">
@@ -35,11 +38,13 @@
         </div>
 
         <div class="flex gap-2 mt-4">
-          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Magie</span>
-          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm"
+          <span class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
+            >Magie</span
+          >
+          <span class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
             >Animaux fantastiques</span
           >
-          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm"
+          <span class="px-3 py-1 bg-[#D6E3E2] text-[#384273] rounded-lg text-sm"
             >Rébellion</span
           >
         </div>
@@ -114,7 +119,7 @@
       </div>
 
       <!-- Mission Cards -->
-      <div class="space-y-6">
+      <div class="grid grid-cols-2 gap-4">
         <!-- Orthography Mission -->
         <div class="bg-gray-50 rounded-2xl p-6">
           <div class="flex items-start gap-4 mb-4">
@@ -128,10 +133,12 @@
           </div>
 
           <p class="text-gray-700 mb-4">
-            Corem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit.
+            Pour ce roman historique se déroulant pendant la Première Guerre
+            mondiale, nous vous demandons d'examiner l'authenticité des
+            descriptions d'époque. Relevez toute incohérence ou anachronisme
+            dans les dialogues, les objets mentionnés, ou les comportements
+            sociaux décrits. Vos connaissances historiques seront précieuses
+            pour garantir la crédibilité du cadre temporel de notre récit.
           </p>
 
           <div class="flex items-center gap-3">
@@ -166,10 +173,12 @@
           </div>
 
           <p class="text-gray-700 mb-4">
-            Corem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit.
+            Cette nouvelle de science-fiction explore des concepts scientifiques
+            complexes. Votre mission est d'évaluer si ces idées sont présentées
+            de manière accessible sans sacrifier leur exactitude. Indiquez les
+            passages où les explications scientifiques semblent confuses, trop
+            techniques pour un lecteur moyen, ou au contraire trop simplifiées
+            au point de devenir inexactes.
           </p>
 
           <div class="flex items-center gap-3">
@@ -220,9 +229,9 @@
           >
             <div>
               <div class="flex items-center gap-2">
-                <span class="font-medium">08</span>
-                <span class="font-medium">Titre du manuscrit</span>
-                <span class="text-sm text-gray-500">15/08/2023</span>
+                <span class="font-medium">04</span>
+                <span class="font-medium">PAR L’EMBRASURE</span>
+                <span class="text-sm text-gray-500">16/02/25</span>
               </div>
               <div class="flex items-center gap-2 mt-1">
                 <span class="text-sm text-gray-600"
@@ -263,8 +272,8 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="font-medium">0{{ 7 - i }}</span>
-              <span class="font-medium">Titre du manuscrit</span>
-              <span class="text-sm text-gray-500">00/00/00</span>
+              <span class="font-medium">À L’HORIZON</span>
+              <span class="text-sm text-gray-500">09/09/24</span>
             </div>
             <div class="flex items-center gap-2 mt-1">
               <span class="text-sm text-gray-600"
@@ -296,5 +305,6 @@
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
+  isNotificationSidebarOpen: Boolean,
 });
 </script>
