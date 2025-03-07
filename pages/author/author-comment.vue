@@ -6,7 +6,7 @@
       props.isNotificationSidebarOpen ? 'mr-72' : 'mr-16',
     ]"
   >
-    <main class="flex-1 p-6" v-if="manuscrit[0]">
+    <main class="flex-1 p-6 overflow-auto" v-if="manuscrit[0]">
       <header class="mb-6 flex justify-between">
         <div>
           <h1 class="text-2xl font-bold">01-2 {{ manuscrit[0].title }}</h1>
@@ -57,7 +57,7 @@
           :key="comment.comment_id"
           class="bg-gray-100 p-4 rounded-lg"
           @mouseover="
-            highlightText(
+            scrollToComment(
               comment.position.start,
               comment.position.end,
               comment.type_comment
@@ -199,7 +199,8 @@ const commentProgress = computed(() => {
 
 const validatedCount = computed(() => {
   return commentaires.value.filter(
-    (comment) => comment.comment_status === "Validé"
+    (comment) =>
+      comment.comment_status === "Validé" || comment.comment_status === "Refusé"
   ).length;
 });
 
@@ -241,11 +242,11 @@ const updateCommentStatus = async (commentId, status) => {
   const comment = commentaires.value.find((c) => c.comment_id === commentId);
 
   if (status === "Validé" && comment) {
-    textEditor.value?.replaceText(
-      comment.position.start,
-      comment.position.end,
-      comment.correction
-    );
+    // textEditor.value?.replaceText(
+    //   comment.position.start,
+    //   comment.position.end,
+    //   comment.correction
+    // );
 
     // Update positions in local state immediately
     const changeInfo = {
@@ -281,10 +282,7 @@ const updateCommentStatus = async (commentId, status) => {
 
   if (error) {
     console.error(error.message);
-    alert("Une erreur est survenue.");
   } else {
-    alert(`Commentaire ${status}.`);
-
     if (status === "Validé") {
       const newContent = textEditor.value?.getContent();
       if (newContent) {
@@ -303,6 +301,20 @@ const updateCommentStatus = async (commentId, status) => {
     }
 
     await loadCommentaires();
+  }
+};
+
+const textContainer = ref(null);
+
+const scrollToComment = async (start, end, type) => {
+  if (textEditor.value) {
+    // Appliquer d'abord la surbrillance
+    textEditor.value.highlight(start, end, type);
+
+    // Attendre un peu plus longtemps pour être sûr que TipTap a eu le temps de mettre à jour le DOM
+    setTimeout(() => {
+      textEditor.value.scrollToHighlight();
+    }, 50);
   }
 };
 

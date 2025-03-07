@@ -87,7 +87,7 @@ const chartOption = {
       },
     },
     {
-      name: "Torat",
+      name: "Tarot 2",
       type: "bar",
       stack: "total",
       data: chartData.map((item) => item.Torat),

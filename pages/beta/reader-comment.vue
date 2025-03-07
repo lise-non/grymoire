@@ -428,10 +428,8 @@ const submitComment = async (isDraft) => {
     });
 
     if (error) throw error;
-    alert("Commentaire ajouté avec succès !");
   } catch (error) {
     console.error(error.message);
-    alert("Une erreur est survenue.");
   } finally {
     addFeedback(isDraft);
     newComment.value.text = "";

@@ -293,11 +293,8 @@ const highlight = (start, end, type) => {
     }
   }
 
-  const adjustedStart = Math.max(0, parseInt(start) + startOffset + 1);
-  const adjustedEnd = Math.min(
-    doc.content.size,
-    parseInt(start) + endOffset + 1
-  );
+  const adjustedStart = Math.max(0, parseInt(start) + startOffset);
+  const adjustedEnd = Math.min(doc.content.size, parseInt(start) + endOffset);
 
   const highlightColor = getTypeColor(type);
 
@@ -332,6 +329,60 @@ const getTypeColor = (type) => {
 const clearHighlight = () => {
   if (!editor.value) return;
   editor.value.commands.unsetHighlight();
+};
+
+const scrollToHighlight = () => {
+  if (!editor.value) return false;
+
+  // Utilisons setTimeout pour s'assurer que les modifications du DOM sont appliquées
+  setTimeout(() => {
+    // Rechercher spécifiquement les éléments ayant des styles de surbrillance
+    const editorElement = document.querySelector(".ProseMirror");
+    if (!editorElement) return false;
+
+    // Rechercher tous les types de surbrillance que nous utilisons
+    const highlightSelectors = [
+      '[style*="background-color: #FDC4CB"]',
+      '[style*="background-color: #FFE484"]',
+      '[style*="background-color: #F8B67A"]',
+      '[style*="background-color: #0E7265"]',
+    ];
+
+    // Créer un sélecteur combiné pour tous les types de surbrillance
+    const selector = highlightSelectors.join(", ");
+
+    // Trouver tous les éléments surlignés
+    const highlightedElements = editorElement.querySelectorAll(selector);
+
+    console.log("Éléments surlignés trouvés:", highlightedElements.length);
+
+    if (highlightedElements.length > 0) {
+      // Faire défiler jusqu'au premier élément surligné
+      highlightedElements[0].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      return true;
+    }
+
+    // Si aucun élément n'est trouvé avec les sélecteurs spécifiques, essayons l'attribut data-highlight
+    const dataHighlightElements =
+      editorElement.querySelectorAll("[data-highlight]");
+    console.log(
+      "Éléments avec data-highlight trouvés:",
+      dataHighlightElements.length
+    );
+
+    if (dataHighlightElements.length > 0) {
+      dataHighlightElements[0].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      return true;
+    }
+
+    return false;
+  }, 150); // Augmentons le délai pour être sûr
 };
 
 const replaceText = (start, end, newText) => {
@@ -372,6 +423,7 @@ defineExpose({
   clearHighlight,
   getContent,
   replaceText,
+  scrollToHighlight,
 });
 </script>
 

@@ -199,7 +199,10 @@
         <!-- Grid des missions -->
         <div class="grid grid-cols-2 gap-4">
           <!-- Carte Ajouter une mission -->
-          <div class="bg-emerald-100 rounded-lg p-8">
+          <div
+            class="bg-emerald-100 rounded-lg p-8"
+            @click="showMissionCard = true"
+          >
             <div class="flex flex-col items-center justify-center h-full">
               <img
                 src="/public/images/mission.png"
@@ -416,15 +419,26 @@
         </div>
       </div>
     </div>
+    <MissionCard
+      :showMissionCard="showMissionCard"
+      @update:showMissionCard="showMissionCard = $event"
+    >
+    </MissionCard>
   </div>
 </template>
 
 <script setup>
+import MissionCard from "~/components/MissionCard.vue";
+
 const props = defineProps({
   isSidebarOpen: Boolean,
   isAuthorMode: Boolean,
   isNotificationSidebarOpen: Boolean,
 });
+
+const currentMission = computed(() => missions.value[1]);
+
+const showMissionCard = ref(false);
 const missions = ref([
   {
     id: 1,

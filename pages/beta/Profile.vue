@@ -29,8 +29,8 @@ const inactiveBadges = ref([{ name: "Stonks" }, { name: "Vacances" }]);
         class="w-16 h-16 rounded-full object-cover"
       />
       <div>
-        <h1 class="text-2xl font-bold text-navy-900">Marie On 💝</h1>
-        <p class="text-gray-600">Bêta-lecteur.trice</p>
+        <h1 class="text-2xl font-bold text-navy-900">Hibou</h1>
+        <p class="text-gray-600">Bêta-lecteur.trice / Auteur.ice</p>
       </div>
     </div>
 
