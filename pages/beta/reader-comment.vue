@@ -36,6 +36,10 @@
           v-else
           class="text-gray-700 leading-loose"
           @mouseup="handleTextSelection"
+          @contextmenu.prevent
+          @copy.prevent
+          @cut.prevent
+          @paste.prevent
         >
           {{ manuscrit[0]?.normalized_text.replace(/<[^>]*>/g, "") }}
         </p>
@@ -405,6 +409,34 @@ const closeOnBackdropClick = () => {
   // Close the modal if the user clicks outside the content area
   isTooltipVisible.value = false;
 };
+
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "F12" ||
+    (event.ctrlKey && event.shiftKey && event.key === "I")
+  ) {
+    event.preventDefault();
+    alert("Accès interdit !");
+  }
+});
+
+const disableShortcuts = (event) => {
+  if (
+    (event.ctrlKey || event.metaKey) &&
+    ["c", "x", "v", "a", "s", "u"].includes(event.key.toLowerCase())
+  ) {
+    event.preventDefault();
+    alert("Cette action est désactivée !");
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("keydown", disableShortcuts);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("keydown", disableShortcuts);
+});
 
 // Soumettre le commentaire
 const submitComment = async (isDraft) => {

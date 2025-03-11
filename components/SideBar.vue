@@ -333,8 +333,8 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink
-              to="/messages"
+            <div
+              @click="logout"
               class="flex items-center gap-3 text-white p-2 rounded-lg hover:bg-[#353b82]"
               :class="{ 'justify-center': !open }"
             >
@@ -354,7 +354,7 @@
               </svg>
 
               <span v-if="open">Paramètres</span>
-            </NuxtLink>
+            </div>
           </li>
         </ul>
       </div>
@@ -364,6 +364,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
+const { user, signOut } = useAuth();
 
 const props = defineProps({
   modelValue: {
@@ -373,6 +374,10 @@ const props = defineProps({
   mode: {
     type: Boolean,
     default: false,
+  },
+  auth: {
+    type: Boolean,
+    default: true,
   },
 });
 
@@ -389,6 +394,13 @@ const isAuthorMode = computed(() => props.mode);
 
 const toggleSidebar = (value) => {
   emit("update:modelValue", value);
+};
+
+const logout = async () => {
+  await signOut();
+  router.push("/connexion");
+
+  emit("update:auth", false);
 };
 
 const toggleMode = () => {

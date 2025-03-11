@@ -7,7 +7,7 @@
   </header>
 
   <!-- Main Grid -->
-  <div class="grid grid-cols-2 gap-6">
+  <div class="grid grid-cols-2 gap-6 ml-6">
     <!-- Project Funds -->
 
     <div class="rounded-lg bg-white p-6 shadow-sm">
@@ -137,7 +137,7 @@
   </div>
 
   <!-- Project Section -->
-  <div class="mt-8">
+  <div class="mt-8 ml-6">
     <div class="flex items-center gap-2 mb-6">
       <h2 class="text-2xl font-bold text-[#20214B]">Projet P</h2>
       <button class="text-gray-400">

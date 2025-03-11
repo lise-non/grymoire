@@ -6,6 +6,7 @@
         v-if="isAuthenticated"
         v-model="isSidebarOpen"
         v-model:mode="isAuthorMode"
+        v-model:auth="isAuthenticated"
       ></SideBar>
       <!-- Pass isSidebarOpen and isAuthorMode props only when authenticated -->
       <NuxtPage
